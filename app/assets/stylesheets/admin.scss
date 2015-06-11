@@ -1,0 +1,75 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$blu: #3498db;
+$gre: #1bc4a3;
+$red: #e74c3c;
+$yel: #f1c40f;
+$yel-dk: #D2A803;
+$org: #e67e22;
+
+
+
+//ダーク系
+$blk: #333;
+$ash: #eee;
+$bdr: #d4d4d3;
+$bdr-dk: #cfcfcf;
+$drk: #999;
+$gry: #6F716B;
+
+.container-admin{
+padding: 0 0 1rem;
+}
+table {
+  width: 99%;
+  border-collapse: collapse;
+  margin: 1rem auto;
+}
+
+table{
+  .p5{
+    width: 5%;
+  }
+  .p10{
+    width: 10%;
+  }
+  .p20{
+    width: 20%;
+  }
+  th{
+    padding: .4rem;
+    text-align: left;
+    vertical-align: top;
+    color: #333;
+    background-color: #eee;
+    border: 1px solid #b9b9b9;
+  }
+  td{
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+  }
+  img{
+    max-width: 150px;
+  }
+}
+#place_description,#area_description{
+  width: 500px;
+  height: 70px;
+}
+.back-admin{
+  display: block;
+  width: 15rem;
+  height: 35px;
+  line-height: 35px;
+  background-color: $yel;
+  text-align:center;
+  border-radius: 0.3rem;
+}
+.txt-note-admin{
+  font-size: .7rem;
+  font-weight: 400;
+}
+

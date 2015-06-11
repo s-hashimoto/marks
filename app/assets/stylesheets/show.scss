@@ -1,0 +1,802 @@
+// Place all the styles related to the show controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//↓共通要素
+
+body{
+  margin: 0;
+  font-family: "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro";
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+p{
+  display: block;
+  //margin: 0.4rem;
+}
+dl{
+  margin: 0;
+  dt{
+    margin: 0;
+    display: inline;
+  }
+  dd{
+    margin: 0;
+    display: inline;
+
+  }
+}
+h3{
+  color: $blk;
+}
+section{
+  display: inline-block;
+  clear: both;
+  padding: 0 0 1rem;
+  width: 100%;
+}
+input[type="submit"]{
+  -webkit-appearance: none;
+}
+
+//使い回し
+.link-txt{
+  color: $blk;
+  &:hover{
+    color: $sdw;
+  }
+}
+.container{
+  max-width: $width;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 0.4rem;
+}
+.button-main{
+  $button-main: $blk;
+  line-height: 3.6rem;
+  font-size: 1.2rem;
+  background-color: $yel;
+  border-radius: 0.3rem;
+  width: 100%;
+  border-bottom:  $yel-dk 3px solid;
+  display: inline-block;
+  text-align: center;
+  margin: 2rem auto;
+  font-weight: 700;
+  color: $button-main;
+  &:visited{
+    color: $button-main;
+  }
+  &:hover{
+    opacity: 0.8;
+  }
+}
+.button-sub{
+  $button-sub: $org;
+  line-height: 2rem;
+  font-size: .7rem;
+  border-radius: 0.3rem;
+  border: solid 2px $button-sub;
+  color: $button-sub;
+  display: inline-block;
+  text-align: center;
+  margin: .5rem auto;
+  padding: 0 2rem;
+  font-weight: 700;
+  &:visited{
+    color: $button-sub;
+  }
+  &:hover{
+    border: solid 2px $button-sub;
+    background-color: $button-sub;
+    color: white;
+  }
+}
+.button-not-login{
+  background-color: $red !important;
+  border-bottom:  $red-dk 3px solid !important;
+  color: white !important;
+}
+//メモ：ボタン2種類、box2種類、フォームは使い回し化しといていいかも
+
+
+//↓カスタマイズ
+//@media screen and (max-width: 768px){
+
+//top
+.sec-catch-top{
+  margin: 0;
+  padding: 2rem 0 1rem;
+  background-color: $ash;
+  border-top: solid 1px $gry;
+  border-bottom: solid 1px $gry;
+  h1{
+    line-height: 3rem;
+    margin: 0 auto .3rem;
+    color: $blk;
+    text-align: center;
+  }
+  p{
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+.recent-top{
+  clear: both;
+  h3{
+    padding: 0 .5rem;
+  }
+}
+.txt-rate-top{
+  float: left;
+  padding-right: .4rem;
+  line-height: 1rem;
+}
+.txt-posts-top{
+  display:block;
+  float:left;
+  line-height: 1rem;
+}
+.box-user-toplogs{
+  position: relative;
+  display: inline-block;
+  margin-top: .3rem;
+  img{
+    position: absolute;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 2rem;
+  }
+  .txt-user-top{
+    display: block;
+    width: 100%;
+    clear: both;
+    float: left;
+    margin-left: 2.5rem;
+    color: $blk !important;
+  }
+}
+main{
+  .page-top,.page-area{
+    margin: 1rem auto;
+    .box-areas,.box-places{
+      //border:1px solid #ddd;
+      width: 33.3%;
+      float: left;
+      text-align: center;
+      border-radius: 0.2rem;
+      margin: 0 0 1.5rem;
+      display: inline-block;
+      .inner{
+        border-radius: 0.2rem;
+        border: solid $gry 1px;
+        border-bottom: solid $gry 3px;
+        margin: 0 0.2rem;
+        overflow:hidden;
+        background-color: $wht;
+        //box-shadow: 0 0 1px $drk;
+        h3{
+          font-size: .9rem;
+          margin: .5rem 0;
+        }
+        p{
+          font-size: .7rem;
+        }
+      }
+      .box-img-top{
+        height: 7rem;
+        overflow:hidden;
+      }
+      img{
+        max-width: 100%;
+        display: block;
+        margin: 0 auto 0;
+      }
+    }
+  }
+}
+.link-selectplace-topunder{
+  color: $blu;
+  p{
+    margin: 0 auto 3rem !important;
+  }
+}
+//ぱんくず
+.bg-ash{
+  background-color: #f5f5f5;
+  border-top: solid 1px $ash;
+  border-bottom: solid 1px $ash;
+}
+.bread-crumb{
+  color: $blk;
+  z-index: 8;
+  a{
+    color: $blk;
+  }
+  li{
+    display: inline-block;
+    font-size: 0.8rem;
+  }
+}
+
+//area.html
+.sec-area-head{
+  border-bottom: solid 1px $gry;
+}
+.sec-area-places{
+  background-color: $ash;
+}
+.box-catch-area{
+  background-size: cover;
+  background-position: 20% 0;
+}
+//place.html
+.box-catch-place{
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  //子ボックスのposition: absolute;を効かすために。
+  //min-height: 20rem;
+}
+.box-place-img{
+  overflow:hidden;
+  max-height: 18rem;
+  min-height: 10rem;
+  padding: 0;
+  img{
+  width: 100%;
+  max-height: 100%;
+  margin: 0;
+  z-index: 0;
+  }
+}
+.box-place-description-basic{//extend用
+  color: $blk;
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+}
+.inner-box-place-basic{//extend用
+  border-right: solid 1px $gry;
+  border-left: solid 1px $gry;
+  padding: .2rem .4rem 0;
+  background-color: rgba( 250, 250, 250, .92 );
+}
+.box-place-description-up{
+  @extend .box-place-description-basic;
+  position: absolute;
+  bottom: 0rem;
+  .inner-box-place{
+    @extend .inner-box-place-basic;
+    border-radius: .3rem .3rem 0 0 ;
+    padding-bottom: .2rem;
+    border-top: solid 1px $gry;
+    h1{
+      margin: .4rem 0;
+      border-bottom: solid $gry 1px;
+    }
+    .box-flag{
+      display: inline-block;
+      li{
+        float: left;
+        font-size: .8rem;
+        margin: .2rem .6rem 0 0;
+        display: block;
+      }
+      dt{
+        border: solid 1px $drk;
+        background-color: $wht;
+        border-radius: 2px;
+        padding: .2rem .3rem;
+        text-align: center;
+        color: $blk;
+      }
+    }
+  }
+}
+.sec-place-description-down{
+  margin: 0;
+  padding: 0;
+}
+.box-place-description-down{
+  @extend .box-place-description-basic;
+  position: relative;
+  .inner-box-place{
+    @extend .inner-box-place-basic;
+    padding-bottom: .4rem;
+    border-radius: 0 0 .3rem .3rem;
+    border-bottom: solid $gry 3px;
+  }
+  .box-rating{
+    margin: 0 0 .4rem;
+    display: block;
+    clear: both;
+  }
+  .rating{
+    display: inline-block;
+    margin-right: 1rem;
+    p{
+      margin: 0;
+    }
+    .rate{
+      font-size: .7rem;
+    }
+    .star{
+      color: $org;
+      font-size: 1.3rem;
+      line-height: 2rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 0px $org-dk;
+    }
+  }
+  .descripiton-place{
+    display: block;
+    clear: both;
+    font-size: .8rem;
+    margin: 0;
+  }
+}
+.sec-place-tab{
+  margin-top: 3rem;
+  padding: 0;
+  display: block; //これ、selectedの下線がピッタリつくように。
+  .container{
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+  }
+  span{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+    padding: 0;
+    color: $drk;
+  }
+  .selected-tab{
+    border-bottom: 3px solid $blu;
+    color: $blk;
+  }
+}
+.sec-post-place{
+  background-color: $wht;
+  border-top: 1px solid $gry;
+  padding: 1rem 0;
+}
+.txt-place-logs{
+  margin-top: 0;
+}
+.box-post-place{
+  margin-bottom: 1.5rem;
+  width: 100%;
+  .inner{
+    margin: 0 .2rem;
+    display: inline-block;
+    position: relative;
+    .body-posts-top{
+      padding: .3rem;
+      clear: both;
+      position: absolute;
+      bottom: 0;
+      color: white;
+      h4{
+        margin: 0;
+        line-height: 1.2rem;
+        width: 100%;
+        float: left;
+        font-size: 1.4rem;
+      }
+      span{
+        color: $org;
+        font-size: 0.7rem;
+        line-height: 1rem;
+      }
+      .time{
+        color: white !important;
+      }
+      p{
+        margin: 0 ;
+        font-size: .8rem;
+      }
+    }
+    .img-posts{
+      display: block;
+      min-height: 13rem;
+      height: 13rem;
+      overflow: hidden;
+      position: relative;
+      border-radius: .1rem;
+        background-color: #000;
+      img{
+        display: inline-block;
+        max-width: 100%;
+        width: 100%;
+        opacity: 0.5;
+      }
+    }
+  }//.inner
+  .body-posts-bottom{
+    clear: both;
+    span{
+      font-size: 0.7rem;
+      line-height: 1rem;
+    }
+  }
+}//.box-post-place
+.sec-more{
+  display: block;
+  clear: both;
+}
+.button-more{
+  float: right;
+}
+
+//post.html
+.txt-post-notice{
+  border-radius: .2rem;
+  background-color: $ash;
+  border: solid 1px $gry;
+  padding: .4rem .7rem;
+  font-size: .8rem;
+}
+.f-date{
+  float: left;
+  margin-right: .4rem;
+}
+.columns-f{
+  display: inline-block;
+  clear: both;
+  min-height: 2rem;
+  margin: .6rem 0;
+  width: 100%;
+  h3{
+    font-size: .8rem !important;
+    margin: .2rem 0 0;
+  }
+  p{
+    margin: 0;
+  }
+  .button-submit{
+    border: none;
+    //これないとcssきかない。
+    width: 80%;
+    margin: 1rem auto;
+    padding: 0 3rem;
+    line-height: 3rem;
+    font-size: 1.4rem;
+    color: $blk;
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    background-color:  $yel;
+    border-radius: 0.3rem;
+    border-bottom:  $yel-dk 3px solid;
+    cursor: pointer;
+    &:hover{
+      opacity: 0.8
+    }
+  }
+
+}
+.column-f-left{
+  width: 27%;
+  float: left;
+  display: block;
+  h3{
+    display: inline-block;
+  }
+}
+.column-f-right{
+  width: 73%;
+  float: left;
+  display: block;
+  .count1,.count2{
+    font-weight: 700;
+    color: $red;
+  }
+}
+.txt-photo-box{
+  font-size: .7rem;
+}
+#post_title{
+  width: 96%;
+  height: 1.6rem;
+  border: solid 2px $gry;
+  border-radius: .2rem;
+  font-size: .9rem;
+  display: inline-block;
+}
+#post_description{
+  @extend #post_title;
+  height: 15rem;
+}
+#post_start_point{
+  @extend #post_title;
+}
+#post_end_point{
+  @extend #post_title;
+}
+
+//devise周り
+.button-devise{
+  border: none;
+  //これないとcssきかない。
+  width: 80%;
+  margin: 0 auto 1rem;
+  line-height: 3rem;
+  font-size: 1.2rem;
+  color: $blk;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  background-color:  $yel;
+  border-radius: 0.3rem;
+  border-bottom:  $yel-dk 3px solid;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.8
+  }
+}
+#user_email{
+  @extend #post_title;
+  width: 90%;
+  max-width: 30rem;
+}
+#user_password{
+  @extend #user_email;
+}
+#user_password_confirmation{
+  @extend #user_email;
+}
+#user_current_password{
+  @extend #user_email;
+}
+#user_nickname{
+  @extend #user_email;
+}
+#user_introduction{
+  @extend #user_email;
+}
+.button-mypage{
+  background-color: $gre;
+  border-bottom:  $gre-dk 3px solid;
+  color: white !important;
+}
+.button-signup{
+  background-color: $blu;
+  border-bottom:  $blu-dk 3px solid;
+  color: white !important;
+}
+.button-logout{
+  background-color: $gry;
+  border-bottom:  $drk 3px solid;
+  color: white !important;
+}
+.txt-not-login{
+  text-align: center;
+  display: block;
+}
+.box-img-user{
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  img{
+    width: 5rem;
+    display: block;
+    position: absolute;
+    border-radius: 5rem;
+  }
+}
+#error_explanation{
+  color: $red;
+}
+.must{
+  color: $red;
+  font-size: 1.2rem;
+}
+// about
+.about{
+  background-image: url(/assets/img-bg-about.jpg);
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  width: 100%;
+}
+.box-about{
+  background-color: rgba( 250, 250, 250, .85 );
+  border-radius: .3rem;
+  border: solid 1px $ash;
+  margin: 2rem auto;
+}
+
+// logs-detail
+.container-logs-detail{
+  word-wrap : break-word;
+  overflow-wrap : break-word;
+  width: 80%;
+  max-width: $width * .8 ;
+  h1{
+    margin-bottom: .5rem;
+  }
+}
+.img-posts-detail{
+  max-width: 100%;
+}
+.sec-logs-place{
+  background-color: $ash;
+  border-top: apx solid $gry;
+  h3{
+    display: inline;
+    margin-right: .2rem;
+  }
+  .link-moreplace-log{
+    color: $blu;
+    font-size: .9rem;
+  }
+}
+.txt-subinfo-posts{
+  font-size: .8rem;
+  color: $drk;
+  margin-bottom: .5rem;
+}
+.rating-logs{
+  .rate{
+    font-size: .8rem;
+  }
+  .rate-p{
+    margin: .5rem 0 .2rem;
+  }
+  .star{
+    color: $org;
+    font-size: 1.2rem;
+  }
+  .txt-for-logs{
+    color: white;
+    background-color: $org;
+    border-radius: .2rem;
+    font-size: .8rem;
+    padding: .1rem .5rem;
+    display: inline-block;
+  }
+}
+.outer-share{
+  display: block;
+  clear: both;
+  padding: 1rem 0;
+}
+.box-user-logs{
+  border-radius: .3rem;
+  margin: 1rem 0 2rem;
+  padding: 1rem;
+  border: solid $gry 1px;
+  border-bottom: solid $gry 3px;
+  .inner{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+  }
+  h2{
+    margin: 0 0 .8rem;
+  }
+  img{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    display: block;
+    position: absolute;
+  }
+  .box-span{
+    display: block;
+    float: left;
+    clear: both;
+    margin-left: 3.5rem;
+  }
+  .outer{
+    padding-top: .7rem;
+    display: inline-block;
+    width: 100%;
+  }
+  .summit{
+    font-size: .8rem;
+    color: white;
+    border-radius: .2rem;
+    background-color: $red;
+    padding: .2rem .5rem;
+    display: block;
+    clear: both;
+  }
+  .under{
+    color: $drk;
+
+  }
+}
+.txt-mountain-logs{
+  font-weight: 700;
+}
+
+//select_place
+.box-areas-selects{
+  h2{
+    font-size: 1rem;
+    margin-top: 0;
+  }
+}
+.box-places-selects{
+  h3{
+    display: inline-block;
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: .3rem;
+    font-weight: 400;
+  }
+  a{
+    color: $blu;
+  }
+}
+
+//guideline
+.guideline{
+  h2{
+    color: $red;
+  }
+}
+
+//}mediaの締め
+@media screen and (max-width: 640px){
+.sec-catch-top{
+  h1{
+    font-size: 1.5rem;
+  }
+}
+.column-f-left{
+  width: 100%;
+}
+.column-f-right{
+  width: 100%;
+}
+.box-img-top{
+  height: 3.5rem !important;
+}
+.box-catch-area{
+  padding: 2rem 0;
+  font-size: .85rem;
+  min-height: 7rem;
+}
+.sec-area-head{
+  p{
+    font-size: .8rem;
+  }
+}
+.box-place-img{
+  max-height: 14rem !important;
+  img{
+    margin-top: -16%;
+  }
+}
+}
+@media screen and (min-width: 640px){
+.box-catch-area{
+  min-height: 17rem;
+}
+.box-place-img{
+  img{
+    margin-top: -26%;
+  }
+}
+.box-post-place{
+  width: 33.3%;
+  float: left;
+}
+}

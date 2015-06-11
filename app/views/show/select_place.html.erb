@@ -1,0 +1,46 @@
+<!--ここからぱんくず-->
+<div class="bg-ash">
+  <div class="container">
+    <ul class="bread-crumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/top"><span itemprop="name">MARKS 山 TOP</span></a>
+          <meta itemprop="position" content="1">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/select_area %>"><span itemprop="name">山の一覧</span></a>
+          <meta itemprop="position" content="2">
+      </li>
+    </ul>
+  </div>
+</div>
+<!--ぱんくずここまで-->
+
+<main>
+  <div class="container">
+  <h1>エリア別 すべての山の一覧</h1>
+  <% @areas.each do |a| %>
+  <div class="columns-f">
+    <div class="column-f-left box-areas-selects">
+      <h2><%= a.name %></h2>
+    </div>
+    <div class="column-f-right box-places-selects">
+      <p>
+        <% Place.where(:areaid => a.id).order("altitude DESC").each do |p| %>
+        <h3>
+          <a href="/area/<%= a.id %>/place/<%= p.id %>">
+            <%= p.name %>(<%= number_with_delimiter(p.altitude) %>m)
+          </a>
+        </h3>
+        <%- end -%>
+      </p>
+    </div>
+  </div>
+  <%- end -%>
+
+  <p>現在Beta版につき、関東近郊以外の山は掲載準備中です。</p>
+
+  </div><!-- container -->
+
+</main>
+
+

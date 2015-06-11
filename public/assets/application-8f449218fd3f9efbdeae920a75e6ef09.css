@@ -1,0 +1,506 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+ */
+@font-face {
+  font-family: 'bokutachi';
+  src: url("/assets/bokutachi.otf") format("opentype");
+}
+@font-face {
+  font-family: 'boku2';
+  src: url("/assets/boku2.otf") format("opentype");
+}
+/* line 5, /home/ec2-user/rails/marks/app/assets/stylesheets/common.scss */
+html {
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 10, /home/ec2-user/rails/marks/app/assets/stylesheets/common.scss */
+header {
+  display: block;
+  height: 3.5rem;
+  z-index: 1;
+  border-top: solid 3px #f1c40f;
+  padding: 0.3rem 0;
+}
+/* line 17, /home/ec2-user/rails/marks/app/assets/stylesheets/common.scss */
+header .container {
+  padding: 0.5rem 0.4rem;
+}
+/* line 20, /home/ec2-user/rails/marks/app/assets/stylesheets/common.scss */
+header img {
+  height: 2.5rem;
+  float: left;
+}
+/* line 24, /home/ec2-user/rails/marks/app/assets/stylesheets/common.scss */
+header span {
+  line-height: 2.5rem;
+  display: inline-block;
+  float: left;
+  margin: 0 2rem;
+}
+/* line 30, /home/ec2-user/rails/marks/app/assets/stylesheets/common.scss */
+header .button-post {
+  line-height: 2.3rem;
+  font-size: 0.7rem;
+  float: right;
+  background-color: #f1c40f;
+  border-radius: 0.3rem;
+  padding: 0 1.3rem;
+  border-bottom: #D2A803 3px solid;
+  display: block;
+  color: #333;
+  font-weight: 700;
+}
+
+/* line 43, /home/ec2-user/rails/marks/app/assets/stylesheets/common.scss */
+footer {
+  display: block;
+  clear: both;
+  height: 3.5rem;
+  z-index: 1;
+  border-top: solid 3px #f1c40f;
+  padding: 0.3rem 0;
+  color: #e67e22;
+}
+
+/* line 7, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+body {
+  margin: 0;
+}
+
+/* line 10, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 14, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+li {
+  list-style: none;
+}
+
+/* line 17, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+a {
+  text-decoration: none;
+  color: red;
+}
+/* line 20, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+a:link {
+  color: #3498db;
+  background-color: #3498db;
+}
+/* line 24, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+a:visited {
+  color: #3498db;
+}
+
+/* line 28, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+p {
+  display: block;
+}
+
+/* line 32, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+dl {
+  margin: 0;
+}
+/* line 34, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+dl dt {
+  margin: 0;
+  display: inline;
+}
+/* line 38, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+dl dd {
+  margin: 0;
+  display: inline;
+}
+
+/* line 44, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+h3 {
+  color: red;
+}
+
+/* line 49, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.container {
+  max-width: 56rem;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 0.4rem;
+}
+
+/* line 55, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.bg-ash {
+  background-color: #6F716B;
+}
+
+/* line 64, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.top-bg {
+  background-image: url(/assets/img-bg.jpg);
+}
+
+/* line 67, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-catch {
+  margin: 0;
+  padding: 2rem 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+/* line 74, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-catch h1 {
+  line-height: 2rem;
+  margin-top: 0;
+}
+
+/* line 81, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+main .page-top, main .page-area {
+  margin: 1rem auto;
+}
+/* line 83, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+main .page-top .box-areas, main .page-top .box-places, main .page-area .box-areas, main .page-area .box-places {
+  width: 33.3%;
+  float: left;
+  text-align: center;
+  border-radius: 0.3rem;
+  margin: 0 0 2rem;
+}
+/* line 90, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+main .page-top .box-areas .inner, main .page-top .box-places .inner, main .page-area .box-areas .inner, main .page-area .box-places .inner {
+  border-radius: 0.3rem;
+  border: solid #d4d4d3 1px;
+  border-bottom: solid #cfcfcf 3px;
+  margin: 0 0.1rem;
+  overflow: hidden;
+}
+/* line 97, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+main .page-top .box-areas .box-img-top, main .page-top .box-places .box-img-top, main .page-area .box-areas .box-img-top, main .page-area .box-places .box-img-top {
+  max-height: 5rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+/* line 102, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+main .page-top .box-areas img, main .page-top .box-places img, main .page-area .box-areas img, main .page-area .box-places img {
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+}
+/* line 108, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+main .page-top .box-areas h3, main .page-top .box-places h3, main .page-area .box-areas h3, main .page-area .box-places h3 {
+  font-size: 0.9rem;
+}
+
+/* line 114, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.recent-top {
+  clear: both;
+}
+
+/* line 117, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.bread-crumb {
+  color: white;
+}
+/* line 119, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.bread-crumb a {
+  color: white;
+}
+/* line 122, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.bread-crumb li {
+  display: inline-block;
+  font-size: 0.8rem;
+}
+
+/* line 133, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description {
+  color: white;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  text-align: left;
+}
+/* line 134, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description h1 {
+  font-size: 2.5rem;
+}
+/* line 136, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description h1 rt {
+  font-size: .7rem;
+}
+/* line 145, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description .inner {
+  padding: 1.2rem 0.4rem 0.4rem;
+}
+/* line 147, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description .inner ul {
+  display: inline-block;
+}
+/* line 150, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description .inner li {
+  float: left;
+  margin: 0 2rem 0 0;
+}
+/* line 152, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description .inner li .icon-place img {
+  width: 25px;
+  display: inline-block;
+  float: left;
+}
+/* line 162, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-place-description .descripiton-place {
+  font-size: 0.8rem;
+}
+
+/* line 168, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.rating-section-inner {
+  padding: 0.6rem 0;
+  display: inline-block;
+  width: 100%;
+}
+
+/* line 173, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.rating {
+  float: left;
+  display: block;
+}
+/* line 176, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.rating p {
+  margin: 0;
+}
+/* line 179, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.rating .inner {
+  text-align: left;
+}
+/* line 182, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.rating .rate {
+  font-size: 0.9rem;
+}
+/* line 185, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.rating .star {
+  color: #3498db;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 1px white;
+}
+
+/* line 194, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.button-post-place {
+  line-height: 3.6rem;
+  font-size: 1.2rem;
+  background-color: #f1c40f;
+  border-radius: 0.3rem;
+  width: 100%;
+  border-bottom: #D2A803 3px solid;
+  display: inline-block;
+  color: #333;
+  text-align: center;
+  margin: .5rem auto;
+  font-weight: 700;
+}
+
+/* line 207, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place {
+  background-color: #eee;
+  border-radius: 0.3rem;
+  border-bottom: solid 3px #cfcfcf;
+  width: 100%;
+  margin: 0 0 .8rem;
+  min-height: 7rem;
+}
+/* line 214, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner {
+  padding: 1rem;
+  display: inline-block;
+}
+/* line 217, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner .body-posts {
+  float: left;
+  margin: 0 0 0 6rem;
+}
+/* line 220, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner .body-posts h4 {
+  margin: 0;
+}
+/* line 223, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner .body-posts span {
+  color: #e67e22;
+  font-size: 0.7rem;
+}
+/* line 227, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner .body-posts .time {
+  color: #999 !important;
+}
+/* line 230, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner .body-posts p {
+  margin: .6rem 0 0;
+  font-size: .8rem;
+}
+/* line 235, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner .img-posts {
+  display: block;
+  position: absolute;
+}
+/* line 238, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.box-post-place .inner .img-posts img {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+}
+
+/* line 246, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.button-more {
+  line-height: 2rem;
+  font-size: .7rem;
+  border-radius: 0.3rem;
+  border: solid 2px #e67e22;
+  color: #e67e22;
+  display: inline-block;
+  text-align: center;
+  margin: .5rem auto;
+  padding: 0 2rem;
+  float: right;
+  font-weight: 700;
+}
+
+/* line 260, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.f-date {
+  float: left;
+  margin-right: .4rem;
+}
+
+/* line 264, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.columns-f {
+  display: block;
+  clear: both;
+  min-height: 2rem;
+  margin: 1rem 0;
+}
+/* line 269, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.columns-f h3 {
+  font-size: .8rem !important;
+  margin: .2rem 0 0;
+}
+/* line 273, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.columns-f p {
+  margin: 0;
+}
+/* line 276, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.columns-f .button-submit {
+  border: none;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  line-height: 3rem;
+  font-size: 1.4rem;
+  color: #333;
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  background-color: #f1c40f;
+  border-radius: 0.3rem;
+  border-bottom: #D2A803 3px solid;
+}
+
+/* line 294, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.column-f-left {
+  width: 25%;
+  float: left;
+  display: block;
+}
+
+/* line 299, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+.column-f-right {
+  width: 75%;
+  float: left;
+  display: block;
+}
+
+/* line 304, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+#post_title {
+  width: 96%;
+  height: 1.6rem;
+  border: solid 1px #999;
+  border-radius: .2rem;
+  font-size: .9rem;
+}
+
+/* line 311, /home/ec2-user/rails/marks/app/assets/stylesheets/show.scss */
+#post_description {
+  width: 96%;
+  height: 6rem;
+  border: solid 1px #999;
+  border-radius: .2rem;
+  font-size: .9rem;
+}
+
+/* line 22, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+.container-admin {
+  padding: 0 1rem 1rem;
+}
+
+/* line 25, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+/* line 32, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+table .p5 {
+  width: 5%;
+}
+/* line 35, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+table .p10 {
+  width: 10%;
+}
+/* line 38, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+table .p20 {
+  width: 20%;
+}
+/* line 41, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+table th {
+  padding: .4rem;
+  text-align: left;
+  vertical-align: top;
+  color: #333;
+  background-color: #eee;
+  border: 1px solid #b9b9b9;
+}
+/* line 49, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+table td {
+  padding: 6px;
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+}
+/* line 54, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+table img {
+  max-width: 150px;
+}
+
+/* line 58, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+#place_description, #area_description {
+  width: 500px;
+  height: 70px;
+}
+
+/* line 62, /home/ec2-user/rails/marks/app/assets/stylesheets/admin.scss */
+.back-admin {
+  display: block;
+  width: 15rem;
+  height: 35px;
+  line-height: 35px;
+  background-color: #f1c40f;
+  text-align: center;
+  border-radius: 0.3rem;
+}

@@ -1,0 +1,113 @@
+<!--ここからぱんくず-->
+<div class="bg-ash">
+  <div class="container">
+    <ul class="bread-crumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/"><span itemprop="name">MARK 山 TOP</span></a>
+          <meta itemprop="position" content="1">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/users/sign_up"><span itemprop="name">アカウントを編集する</span></a>
+          <meta itemprop="position" content="2">
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+<!-- <h2>Edit <%= resource_name.to_s.humanize %></h2> -->
+<h2>アカウントの編集 （<%= current_user.nickname %>でログイン中）</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :ニックネーム %></h3>
+    </div>
+    <div class="column-f-right">
+      <%= f.text_field :nickname %>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :ひと言説明 %></h3>
+    </div>
+    <div class="column-f-right">
+      <%= f.text_field :introduction %>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :プロフィールアイコン %></h3>
+    </div>
+    <div class="column-f-right">
+      <% @users = User.find_by(:id =>current_user[:id]) %>
+      <div class="box-img-user">
+        <% if @users[:img] != nil then %>
+        <%= image_tag @users.img.thumb %>
+        <% else %>
+        <img src="<%= asset_path "icon-user-noimg-bw.png" %>">
+        <% end %>
+      </div>
+      <%= f.file_field :img %>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :email %></h3>
+    </div>
+    <div class="column-f-right">
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :変更したいパスワード %></h3>
+    </div>
+    <div class="column-f-right">
+      <%= f.password_field :password, autocomplete: "off", :placeholder => "パスワードを変更したい時のみ入力" %>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :変更したいパスワード（確認） %></h3>
+    </div>
+    <div class="column-f-right">
+      <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "パスワードを変更したい時のみ入力" %>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :現在のパスワード %></h3>
+    </div>
+    <div class="column-f-right">
+      <%= f.password_field :current_password, autocomplete: "off", :placeholder => "登録情報を変更するには入力必須"  %>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <%= f.submit(:更新する, :class => 'button-devise button-mypage')%>
+  </div>
+
+<% end %>
+
+<%= link_to "ログアウト", destroy_user_session_path, {method: :delete, :class => "button-devise button-logout"} %>
+
+<!--
+会員情報削除。
+<h3>Cancel my account</h3>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+-->
+
+</div>

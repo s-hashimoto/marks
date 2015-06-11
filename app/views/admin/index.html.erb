@@ -1,0 +1,31 @@
+<section class="container-admin">
+
+<h1>Admin#index</h1>
+
+<h2>投稿一覧</h2>
+  <a href="/admin/post">→全投稿を見る</a>
+<h2>エリア一覧</h2>
+  <table style="text-align:left">
+  <tr>
+    <th class="p5">id</th>
+    <th class="p10">エリア名</th>
+    <th class="p10">エリア画像</th>
+    <th class="p20">エリア説明</th>
+    <th class="p10">このエリアの山</th>
+    <th class="p5">更新</th>
+  </tr>
+  <% @areas.each do |area| %>
+  <tr>
+    <td><%= area.id %></td>
+    <td><%= area.name %></td>
+    <td>
+      <img src="<%= area.img %>">
+    </td>
+    <td><%= area.description %></td>
+    <td><a href="/admin/area/<%= area.id %>">このエリアの山を見る</a></td>
+    <td><a href="/admin/area/<%= area.id %>/edit">編集</a></td>
+  </tr>
+  <% end %>
+</table>
+
+</section>

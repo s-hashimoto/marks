@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= display_meta_tags :site => 'MARKS -マークス-', reverse: true %>
+  <%= favicon_link_tag %>
+  <meta name="robots" content="noindex" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+<body class='<%= "#{controller.controller_name}" %>'>
+<%= render partial: 'layouts/add_g_tag_manager' %>
+<!-- facebook -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '100480733623729',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/ja_JP/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- facebook -->
+<!-- deviseのflashのため -->
+<% if notice == nil then %>
+<% else %>
+<span class="add-head notice">
+  <div class="container">
+    <div class="inner">
+      <%= notice %>
+      <span class="hide_notice">[このメッセージを消す]</span>
+    </div>
+  </div>
+</span>
+<% end %>
+<% if alert == nil then %>
+<% else %>
+<span class="add-head alert">
+  <div class="container">
+    <div class="inner">
+      <%= alert %>
+    </div>
+  </div>
+</span>
+<% end %>
+
+  <section class="header-notice">
+    <div class="container">
+      <span>Beta版オープンしました。aaa</span>
+    </div>
+  </section>
+  <header>
+    <div class="container">
+      <a href="/">
+        <img alt="marksのロゴ" class="logo header-logo" src="<%= asset_path "logo.png" %>">
+      </a>
+      <!--
+      <span>
+        みんなで作る、山のデータベース。
+      </span>
+      -->
+      <a  class="button-head button-post" href="/select_place">＋ 登った山を投稿する</a>
+      <!-- ↓ログインしてるか調べるdeviseのHelperメソッド -->
+      <% if user_signed_in? %>
+        <!-- current_user は現在ログインしているUserオブジェクトを返すdeviseのHelperメソッド -->
+        <!-- *_path はUserモデル作成時、自動作成される故rake routesで確認可 -->
+        <!-- Logged in as <strong><%= current_user.email %></strong>. -->
+        <%= link_to edit_user_registration_path, {:class => "button-mypage-head"} do %>
+          <% @users = User.find_by(:id =>current_user[:id]) %>
+            <% if @users[:img] != nil then %>
+              <%= image_tag @users.img.thumb %>
+            <% else %>
+              <img src="<%= asset_path "icon-user-noimg-bw.png" %>">
+            <% end %>
+        <% end %>
+      <% else %>
+        <!-- <%= link_to "サインイン", new_user_registration_path %> -->
+        <%= link_to "ログイン", new_user_session_path, {:class => "button-head button-login"} %>
+      <% end %>
+    </div>
+  </header>
+
+  <%= yield %>
+
+  <footer>
+    <div class="container">
+      <div class="inner">
+      <a href="/">
+        <img alt="marksのロゴ" class="logo footer-logo" src="<%= asset_path "logo.png" %>">
+      </a>
+      <ul>
+        <li><a href="/about">MARKSについて</a></li>
+        <li><a href="/policy">プライバシーポリシー</a></li>
+        <li><a href="/guideline">ガイドライン</a></li>
+        <li><a href="mailto:xxbxxxqxx@gmail.com">問い合わせ</a></li>
+      </ul>
+      </div>
+      <p class="copyright">Copyright © MARKS, Inc.</p>
+    </div>
+  </footer>
+
+</body>
+</html

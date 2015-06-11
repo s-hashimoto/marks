@@ -1,0 +1,173 @@
+<% set_meta_tags :title => @places[:name]+"の詳細", :description => @places[:name]+"の情報、標高、みんなの山行ログを読むならMARKSで。"+" - "+@places[:description].truncate(150, omission: '...') %>
+
+<!--ここからぱんくず-->
+<div class="bg-ash">
+  <div class="container">
+    <ul class="bread-crumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/top"><span itemprop="name">MARKS 山 TOP</span></a>
+          <meta itemprop="position" content="1">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @areas[:id] %>"><span itemprop="name"><%= @areas[:name] %></span></a>
+          <meta itemprop="position" content="2">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @areas[:id] %>/place/<%= @places[:id] %>"><span itemprop="name"><%= @places[:name] %></span></a>
+          <meta itemprop="position" content="3">
+      </li>
+    </ul>
+  </div>
+</div>
+<!--ぱんくずここまで-->
+<main class="box-catch-place">
+  <div class="box-place-img">
+    <% if @places[:img] != nil then %>
+    <img class="img-place-main" src="/uploads/place/img/<%= @places[:id] %>/<%= @places[:img] %>">
+    <% else %>
+    <img class="img-place-main" src="<%= asset_path "noimg.jpg" %>">
+    <% end %>
+  </div>
+  <div class="box-place-description-up"><!-- placeメインBOXの上部 -->
+    <div class="container">
+      <div class="inner-box-place">
+        <h1><ruby><%= @places[:name] %><rt><%= @places[:ruby] %></rt></ruby></h1>
+        <ul class="box-flag">
+          <li><dl>
+            <dt>標高</dt>
+            <dd><%= number_with_delimiter(@places[:altitude]) %>m</dd>
+          </dl></li>
+          <li><dl>
+            <dt>エリア</dt>
+            <dd><%= @areas[:name] %></dd>
+          </dl></li>
+          <% if @places[:hyakumeizan] == "1" then %>
+          <li><dl>
+            <dt>種別</dt>
+            <dd>百名山</dd>
+          </dl></li>
+          <% else %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="box-place-description-down"><!-- placeメインBOXの下部 -->
+  <div class="container">
+    <div class="inner-box-place">
+      <div class="box-rating">
+        <div class="rating">
+          <p><span class="rate">オススメ度</span></p>
+          <span class="star">
+            <% if @satisfyav != nil then %>
+              <% if (@satisfyav.between?(1, 2)) then %>★☆☆☆☆
+              <% elsif (@satisfyav.between?(2, 3)) %>★★☆☆☆
+              <% elsif (@satisfyav.between?(3, 4)) %>★★★☆☆
+              <% elsif (@satisfyav.between?(4, 5)) %>★★★★☆
+              <% else %>★★★★★
+              <% end %>
+              <%= @satisfyav.floor(2) %>
+            <% else %>
+              未評価
+            <% end %>
+          </span>
+        </div>
+        <div class="rating">
+          <p><span class="rate">難易度</span></p>
+          <span class="star">
+            <% if @satisfyav != nil then %>
+              <% if (@dangerav.between?(1, 2)) then %>★☆☆☆☆
+              <% elsif (@dangerav.between?(2, 3)) %>★★☆☆☆
+              <% elsif (@dangerav.between?(3, 4)) %>★★★☆☆
+              <% elsif (@dangerav.between?(4, 5)) %>★★★★☆
+              <% else %>★★★★★
+              <% end %>
+              <%= @dangerav.floor(2) %>
+            <% else %>
+              未評価
+            <% end %>
+          </span>
+        </div>
+      </div>
+      <p class="descripiton-place">
+        <%= simple_format(@places[:description]) %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="sec-place-tab"><!--　タブ -->
+  <div class="container">
+    <span class="selected-tab">TOP</span>
+    <span>投稿されたログ</span>
+    <span>周辺地図</span>
+  </div>
+</section>
+<section class="sec-post-place">
+  <div class="container">
+  <h3 class="txt-place-logs">みんなのログ（全<%= @cntposts %>件）</h3>
+    <% @posts.each do |post| %>
+    <li class="box-post-place">
+    <div class="inner">
+      <div class="img-posts">
+        <img src="<%= post.img1.thumb.url %>">
+      </div>
+      <div class="body-posts">
+        <h4><a class="link-txt" href='/area/<%= @areas[:id] %>/place/<%= @places[:id] %>/logs/<%= post.id %>'><%= post.title.truncate(24, omission: '...') %></a></h4>
+        <span>
+          <% if post.ratesatisfy == "1.0" or post.ratesatisfy == "1.5" then %>
+          ★☆☆☆☆
+          <% elsif post.ratesatisfy == "2.0" or post.ratesatisfy == "2.5" %>
+          ★★☆☆☆
+          <% elsif post.ratesatisfy == "3.0" or post.ratesatisfy == "3.5" %>
+          ★★★☆☆
+          <% elsif post.ratesatisfy == "4.0" or post.ratesatisfy == "4.5" %>
+          ★★★★☆
+          <% else %>
+          ★★★★★
+          <% end %>
+        </span>
+        <span>(<%= post.ratesatisfy %>)</span>
+        <span class="time"><%= post.year %>/<%= post.month %>/<%= post.date %></span>
+        <span class="time">
+          <% if post.nights == "0" then %>
+          日帰り
+          <% else %>
+          <%= post.nights %>泊
+          <% end %>
+        </span>
+        <% @users.where(:id => post.user_id).each do |u| %>
+          <p>
+            <%= u.email %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    </li>
+    <% end %>
+
+    <div>
+      <% if @cntposts == 0 then %>
+        <span>まだ投稿はありません。最初のログ投稿者になりましょう。</span>
+      <% elsif @cntposts >= 6 then %>
+      <div class="sec-more">
+        <a href="" class="button-more button-sub">
+          もっとログを見る &gt;
+        </a>
+      </div>
+      <% else %>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <a class="button-main button-post-place" href="/area/<%= @areas[:id] %>/place/<%= @places[:id] %>/post" data-no-turbolink="1" >
+      ＋ 登ったログを投稿する
+      </a>
+    <% else %>
+      <%= link_to "ログインして投稿", new_user_session_path, {:class => "button-main button-not-login" } %>
+    <% end %>
+
+  </div><!--containe -->
+</section>
+
+

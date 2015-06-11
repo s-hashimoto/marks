@@ -1,0 +1,61 @@
+<section class="container-admin">
+
+<a class="back-admin" href="/admin">admin TOP にもどる</a>
+
+<h1>全投稿</h1>
+
+<table border="1" style="text-align:left;font-size:13px">
+<tr>
+  <th>id</th>
+  <th>タイトル</th>
+  <th>本文</th>
+  <th>画像</th>
+  <th>オススメ度</th>
+  <th>難易度</th>
+  <th>泊数</th>
+  <th>山行年</th>
+  <th>山行月</th>
+  <th>山行日</th>
+  <th>登頂</th>
+  <th>始点</th>
+  <th>終点</th>
+  <th>place_id</th>
+  <th>投稿者</th>
+  <th>公開</th>
+  <th>更新</th>
+  <th>削除</th>
+</tr>
+<% @posts.each do |post| %>
+<tr>
+  <td><%= post.id %></td>
+  <td>
+    <a href="/admin/post/<%= post.id %>"><%= post.title %></a>
+  </td>
+  <td style="max-width:250px;word-wrap:break-word;">
+    <%= post.description %>
+  </td>
+  <td style="max-width:170px;word-wrap:break-word;">
+    <img src="<%= post.img1 %>">
+  </td>
+  <td><%= post.ratesatisfy %></td>
+  <td><%= post.ratedanger %></td>
+  <td><%= post.nights %></td>
+  <td><%= post.year %>年</td>
+  <td><%= post.month %>月</td>
+  <td><%= post.date %>日</td>
+  <td><%= post.summit %></td>
+  <td><%= post.start_point %></td>
+  <td><%= post.end_point %></td>
+  <td><%= post.place_id %></td>
+  <td><%= post.user_id %></td>
+  <td><%= post.status %></td>
+  <td><a href="/admin/post/<%= post.id %>/edit">編集</a></td>
+  <td><a href="/admin/post/<%= post.id %>/delete">削除！</a></td>
+
+</tr>
+<% end %>
+</table>
+
+<a class="back-admin" href="/admin">admin TOP にもどる</a>
+
+</section>

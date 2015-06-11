@@ -1,0 +1,25 @@
+<!--
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div>
+      フォームの入力内容に <%= object.errors.count %>個のエラーがあります。
+    </div>
+    <ul>
+    <% object.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+-->
+
+<% if object.errors.present? %>
+<div class="errMessage">
+  <h3>以下の内容を確認してください。</h3>
+  <ul>
+  <% object.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>

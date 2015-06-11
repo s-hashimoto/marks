@@ -1,0 +1,22 @@
+<section class="container-admin">
+
+<h1>Edit Post</h1>
+  <%= form_for @posts do |f| %>
+
+    <h3><%= f.label :title %></h3>
+    <p><%= f.text_field :title %></p>
+    <h3><%= f.label :description %></h3>
+    <p><%= f.text_area :description %></p>
+
+    <h3><%= f.label :img1 %></h3>
+    <p><%= f.file_field :img1 %></p>
+
+    <h3><%= f.label :user_id %></h3>
+    <p><%= f.text_field :user_id %></p>
+    <h3><%= f.label :place_id %></h3>
+    <p><%= f.text_field :place_id %></p>
+
+    <p><%= f.submit :Update %></p>
+    <% end %>
+
+</section>

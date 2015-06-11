@@ -1,0 +1,94 @@
+<% set_meta_tags :title=> '山登りを愛するハイカーのためのWEBサービス', :description => 'MARKS(マークス)はみんなの山行ログや山の標高や説明などの基本的な情報などが見られます。' %>
+
+<div class="sec-catch-top">
+  <h1>今週末に登る山、もう決めた？</h1>
+  <p>ハイカー達の山行ログから山を探せるWEBサイト</p>
+  <section class="recent-top">
+    <h3>最近の投稿</h3>
+    <% @posts.each do |post| %>
+    <li class="box-post-place">
+      <div class="inner">
+          <div class="img-posts" >
+            <% Place.where(:id => post.place_id).each do |a| %>
+              <a href="/area/<%= a.areaid %>/place/<%= post.place_id %>/logs/<%= post.id %>" z>
+                <img src="<%= post.img1 %>">
+              </a>
+            <% end %>
+          </div>
+        <div class="body-posts-top">
+          <h4><%=post.title %></h4>
+          <div class="txt-rate-top">
+            <span>
+              <% if post.ratesatisfy == "1.0" or post.ratesatisfy == "1.5"    then  %>
+              ★☆☆☆☆
+              <% elsif post.ratesatisfy == "2.0" or post.ratesatisfy == " 2.5"  %>
+              ★★☆☆☆
+              <% elsif post.ratesatisfy == "3.0" or post.ratesatisfy == " 3.5"  %>
+              ★★★☆☆
+              <% elsif post.ratesatisfy == "4.0" or post.ratesatisfy == " 4.5"  %>
+              ★★★★☆
+              <% else %>
+              ★★★★★
+              <% end %>
+            </span>
+            <span>(<%= post.ratesatisfy %>)</span>
+          </div>
+          <div class="txt-posts-top">
+            <span class="time">
+              <% Place.where(:id => post.place_id).each do |a| %>
+                <%= a.name %>
+              <% end %>
+            </span>
+            <span class="time"><%= post.year %>/<%= post.month %>/<%= post.date %></span>
+            <span class="time">
+              <% if post.nights == "0" then %>
+              日帰り
+              <% else %>
+              <%= post.nights %>泊
+              <% end %>
+            </span>
+          </div>
+        </div>
+      </div> <!-- inner -->
+      <div class="body-posts-bottom">
+        <% @users.where(:id => post.user_id).each do |u| %>
+          <div class="box-user-toplogs">
+            <span><%= image_tag u.img.thumb %></span>
+            <span class="txt-user-top"><%= u.nickname.truncate(20, omission: '...') %></span>
+            <span class="txt-user-top"><%= u.introduction.truncate(32, omission: '...') %></span>
+        <% end %>
+          </div>
+      </div>
+    </li>
+    <% end %>
+  </section>
+</div>
+
+<main>
+  <div class="container page-top">
+  <section>
+    <h3>山域エリアから山を探す</h3>
+    <ul>
+    <% @areas.each do |area| %>
+      <a href="/area/<%= area.id %>">
+        <li class="box-areas">
+          <div class="inner">
+            <div class="box-img-top">
+              <% if area.img != nil then %>
+              <img src="<%= area.img.thumb.url %>">
+              <% else %>
+              <img src="<%= asset_path "noimage.gif" %>">
+              <% end %>
+            </div>
+            <h3><%= area.name %></h3>
+          </div>
+        </li>
+      </a>
+    <% end %>
+    </ul>
+  </section>
+  <a href="/select_place" class="link-selectplace-topunder">
+    <p>すべての山をみる ></p>
+  </a>
+  </div>
+</main>

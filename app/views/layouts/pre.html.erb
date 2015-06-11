@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MARKS | 好きな山道やスポットを共有しよう。</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta content="山やアウトドアを愛するハイカーのための、あたらしいWEBサービス。4月上旬オープン予定。メールアドレスをご登録いただくと、お知らせをいち早くお届けします。" name="description">
+  <%= favicon_link_tag %>
+</head>
+<body class='<%= "#{controller.controller_name}" %>'>
+
+<%= yield %>
+
+</body>
+</html>

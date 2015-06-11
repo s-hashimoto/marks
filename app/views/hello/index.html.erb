@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="container">
+      <h1 class="header__site-logo">
+        <a class="header__site-logo-link" href="/">
+          <img alt="marks" class="header-logo" src="assets/logo-white.png">
+        </a>
+      </h1>
+      <main>
+        <span class="description">
+          <h2>
+          好きな山道や景色を共有しよう。<br><br>
+          山やアウトドアを愛するハイカーのための<br>
+          あたらしいWEBサービスです。<br>
+          （2015年4月 オープン予定）
+          </h2>
+          <br>
+          <br>
+          メールアドレスをご登録いただくと、お知らせをいち早くお届けします。
+        </span>
+        <div class="pre-form">
+          <%= form_for @preuser do |f| %>
+            <span class="input-mail">
+              <%= f.text_field :mail, class: "input-mail" %>
+              <%= f.submit :事前登録する, class: "submit-mail" %>
+            </span>
+          <% end %>
+        </div>
+      </main>
+      <!--
+      <% @preusers.each do |preuser| %>
+        <%= preuser.mail %>
+      <% end %>
+      -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<section class="container-admin">
+
+<a class="back-admin" href="/admin/area/<%= @areas[:id] %>">一覧にもどる</a>
+
+<h1>Edit Place</h1>
+<%= form_for @places,:url => {:action => :update_place} do |f| %>
+<!--「:url〜place}」まで書かないとパスエラー。updateに飛んでね。てこと-->
+
+<h3><%= f.label :山の名前 %></h3>
+<p><%= f.text_field :name %></p>
+
+<h3><%= f.label :正しい読み方 %><span class="txt-note-admin"> ※ひらがな</span></h3>
+<p><%= f.text_field :ruby %></p>
+
+<h3><%= f.label :標高 %><span class="txt-note-admin"> ※カンマいらない</span></h3>
+<p><%= f.text_field :altitude %></p>
+
+<h3><%= f.label :山の説明 %><span class="txt-note-admin"> ※スマホ的に120〜150文字程度推奨/改行反映</span></h3>
+<p><%= f.text_area :description %></p>
+
+
+<h3><%= f.label :山のページの背景画像 %><span class="txt-note-admin"> ※横型の通常写真サイズを推奨。横幅1200pxに自動リサイズされる</span></h3>
+<p><%= f.file_field :img %></p><span</span>
+
+<p><%= f.submit :Edit %></p>
+<% end %>
+
+</section>

@@ -1,0 +1,160 @@
+<!--ここからぱんくず-->
+<div class="bg-ash">
+  <div class="container">
+    <ul class="bread-crumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/"><span itemprop="name">MARK 山 TOP</span></a>
+          <meta itemprop="position" content="1">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @area[:id] %>"><span itemprop="name"><%= @area[:name] %></span></a>
+          <meta itemprop="position" content="2">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @area[:id] %>/place/<%= @place[:id] %>"><span itemprop="name"><%= @place[:name] %></span></a>
+          <meta itemprop="position" content="3">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href=""><span itemprop="name">ログの投稿</span></a>
+          <meta itemprop="position" content="4">
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--ぱんくずここまで-->
+<div class="container">
+  <h1><%= @place[:name] %> のログを投稿する</h1>
+
+  <%= form_for(@posts)  do |f| %>
+  <%= f.hidden_field :place_id, :value => @placeid %>
+  <%= f.hidden_field :user_id, :value => @user %>
+  <!--memo:ここでユーザーID投げるにはhttp://tanibkk.hatenablog.com/entry/2013/10/11/161307-->
+
+  <div class="txt-post-notice">
+    <p>
+    [ヒント]「この山に登りたいけど危険かどうか心配な初心者ハイカー」や「事前に登山道の様子を知りたい中級者ハイカー」など、どんな方にとってもわかりやすい言葉遣いや表現でご投稿いただくと、魅力的で有益な情報源になります。
+    </p>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :写真 %></h3><span class="must">*</span>
+    </div>
+    <div class="column-f-right">
+      <p><%= f.file_field(:img1, :required => true) %></p>
+    </div>
+  </div>
+  <!--
+  <h3><%= f.label :img2 %></h3>
+  <p><%= f.file_field :img2 %></p>
+  <h3><%= f.label :img3 %></h3>
+  <p><%= f.file_field :img3 %></p>
+  -->
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :オススメ度 %></h3><span class="must">*</span>
+    </div>
+    <div class="column-f-right">
+      <p><%= f.select(:ratesatisfy, options_for_select([['5.0（★★★★★）最高', '5.0'],['4.5（★★★★☆）', '4.5'],['4.0（★★★★☆）', '4.0'],['3.5（★★★☆☆）', '3.5'],['3.0（★★★☆☆）そこそこ', '3.0'],['2.5（★★☆☆☆）', '2.5'],['2.0（★★☆☆☆）', '2.0'],['1.5（★☆☆☆☆）', '1.5'],['1.0（★☆☆☆☆）最低', '1.0']])) %></p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :難易度 %></h3><span class="must">*</span>
+    </div>
+    <div class="column-f-right">
+      <p><%= f.select(:ratedanger, options_for_select([['1.0（★☆☆☆☆）山が初めての人', '1.0'], ['1.5（★☆☆☆☆）', '1.5'], ['2.0（★★☆☆☆）初級者向け', '2.0'], ['2.5（★★☆☆☆）', '2.5'], ['3.0（★★★☆☆）中級者向け', '3.0'], ['3.5（★★★☆☆）', '3.5'], ['4.0（★★★★☆）中~上級者向け', '4.0'], ['4.5（★★★★☆）', '4.5'], ['5.0（★★★★★）最上級者向け', '5.0']])) %></p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :タイトル %></h3><span class="must">*</span>
+    </div>
+    <div class="column-f-right">
+      <span>現在 </span>
+      <span class="count1">0</span>
+      <span> 文字入力（最低10文字）</span>
+      <p><%= f.text_field(:title, :placeholder => "投稿の一言タイトル", :required => true, :minlength => "10", :title => "10文字以上入力してください。") %></p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :内容 %></h3><span class="must">*</span>
+    </div>
+    <div class="column-f-right">
+      <span>現在 </span>
+      <span class="count2">0</span>
+      <span> 文字入力（最低150文字）</span>
+      <p><%= f.text_area(:description, :placeholder => "山行の内容、オススメのポイント、眺め、注意する難所など、ハイカーの参考になるような情報", :required => true, :minlength => "150", :title => "150文字以上入力してください。") %></p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :泊数 %></h3><span class="must">*</span>
+    </div>
+    <div class="column-f-right">
+      <p><%= f.select(:nights, options_for_select([['日帰り', '0'], [ '1泊2日', '1'], ['2泊3日', '2'], ['3泊4日', '3'], ['それ以上', '5'],])) %></p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :山行日 %></h3><span class="must">*</span>
+    </div>
+    <div class="column-f-right">
+      <ul>
+        <li class="f-date">
+          <%= f.select(:year, options_for_select([['2015年', '2015'],['2014年', '2014'], ['2013年', '2013'],['2012年', '2012'],['2011年', '2011'],['2010年', '2010'],['2009年', '2009'],['2008年', '2008']])) %>
+        </li>
+        <li class="f-date">
+          <%= f.select(:month, options_for_select([['1月','1'], ['2月','2'], ["3月",'3'], ["4月",'4'], ["5月",'5'], ["6月",'6'], ["7月",'7'], ["8月",'8'], ["9月",'9'], ["10月",'10'], ["11月",'11'], ["12月",'12'], ])) %>
+        </li>
+        <li class="f-date">
+          <%= f.select(:date, options_for_select([['1日','1'],['2日','2'],['3日','3'],['4日','4'],['5日','5'],['6日','6'],['7日','7'],['8日','8'],['9日','9'],['10日','10'],['11日','11'],['12日','12'],['13日','13'],['14日','14'],['15日','15'],['16日','16'],['17日','17'],['18日','18'],['19日','19'],['20日','20'],['21日','21'],['22日','22'],['23日','23'],['24日','24'],['25日','25'],['26日','26'],['27日','27'],['28日','28'],['29日','29'],['30日','30'],['31日','31']])) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :スタート地点 %></h3>
+    </div>
+    <div class="column-f-right">
+      <p><%= f.text_field(:start_point, :placeholder => "歩き始めた場所") %></p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :到着地点 %></h3>
+    </div>
+    <div class="column-f-right">
+      <p><%= f.text_field(:end_point, :placeholder => "到着した場所") %></p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <div class="column-f-left">
+      <h3><%= f.label :登頂 %></h3>
+    </div>
+    <div class="column-f-right">
+      <p><%= f.radio_button :summit, 1, {:checked => true} %>登頂した</p>
+      <p><%= f.radio_button :summit, 0 %>登頂しなかった</p>
+    </div>
+  </div>
+
+  <div class="columns-f">
+    <%= f.submit(:投稿する, :class => 'button-submit') %>
+  </div>
+
+  <% end %>
+
+</div>
+

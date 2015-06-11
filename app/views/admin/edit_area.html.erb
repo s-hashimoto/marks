@@ -1,0 +1,22 @@
+<section class="container-admin">
+
+<a class="back-admin" href="/admin">一覧にもどる</a>
+
+<h1>Edit Area</h1>
+<%= form_for @areas,:url => {:action => :update_area} do |f| %>
+<!--「:url〜place}」まで書かないとパスエラー。updateに飛んでね。てこと-->
+
+<h3><%= f.label :エリアの名前 %></h3>
+<p><%= f.text_field :name %></p>
+
+<h3><%= f.label :エリアの説明 %><span class="txt-note-admin"> ※スマホ的に120〜150文字程度推奨/改行反映</span></h3>
+<p><%= f.text_area :description %></p>
+
+
+<h3><%= f.label :各エリアページの背景画像 %><span class="txt-note-admin"> ※写真は横長推奨/横1200pxに自動リサイズされる</span></h3>
+<p><%= f.file_field :img %></p>
+
+<p><%= f.submit :Edit %></p>
+<% end %>
+
+</section>

@@ -1,0 +1,47 @@
+<!--ここからぱんくず-->
+<div class="bg-ash">
+  <div class="container">
+    <ul class="bread-crumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/top"><span itemprop="name">MARK 山 TOP</span></a>
+          <meta itemprop="position" content="1">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @areas[:id] %>"><span itemprop="name"><%= @areas[:name] %></span></a>
+          <meta itemprop="position" content="2">
+      </li>
+    </ul>
+  </div>
+</div>
+<!--ぱんくずここまで-->
+<div class="box-catch-area" style="background-image: url(/uploads/area/img/<%= @areas[:id] %>/<%= @areas[:img] %>)">
+</div>
+<main>
+  <section class="sec-area-head">
+    <div class="container">
+      <h1><%= @areas[:name] %></h1>
+      <%= simple_format(@areas[:description]) %>
+    </div>
+  </section>
+  <section class="sec-area-places">
+    <div class="container page-area">
+    <h3>このエリアの山 一覧</h3>
+      <ul>
+      <% @places.each do |p| %>
+        <li class="box-places">
+        <div class="inner">
+          <a class="link-txt" href="/area/<%= @areas[:id] %>/place/<%= p.id %>">
+            <h3><%= p.name %></h3>
+            <p><%= p.altitude %>m</p>
+          </a>
+          <!-- 中で更にpostをeachする-->
+          <!-- <% @posts.where(:place_id => p.id).each do |po| %>
+          <p><%= po.title %></p>
+          <% end %> -->
+        </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </section>
+</main>

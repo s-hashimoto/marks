@@ -1,0 +1,49 @@
+<section class="container-admin">
+
+<a class="back-admin" href="/admin">admin TOP にもどる</a>
+
+<h1><%= @areas[:name] %>の山一覧</h1>
+    <%= @areas[:description] %>
+
+<table style="text-align:left">
+<tr>
+  <th class="p5">id</th>
+  <th class="p10">name</th>
+  <th class="p5">altitude</th>
+  <th class="p10">img</th>
+  <th class="p20">description</th>
+  <th class="p5">areaid</th>
+  <th class="p5">update_at</th>
+  <th class="p5">更新</th>
+</tr>
+<% @places.each do |place| %>
+<tr>
+  <td><%= place.id %></td>
+  <td>
+    <a href="/admin/area/<%= @areas[:id] %>/place/<%= place.id %>/edit"><%= place.name %></a>
+  </td>
+  <td>
+    <%= place.altitude %>m
+  </td>
+  <td>
+    <a href="<%= place.img %>"><%= image_tag place.img.thumb.url %></a>
+  </td>
+  <td>
+    <%= place.description %>
+  </td>
+  <td>
+    <%= place.areaid %>
+  </td>
+  <td>
+    <%= place.updated_at.in_time_zone('Tokyo') %>
+  </td>
+  <td>
+    <a href="/admin/area/<%= @areas[:id] %>/place/<%= place.id %>/edit">編集</a>
+  </td>
+</tr>
+<% end %>
+</table>
+
+<a class="back-admin" href="/admin">admin TOP にもどる</a>
+
+</section>

@@ -1,0 +1,195 @@
+// 変数一括管理します。
+// scssは_がファイル名先頭につくとよみこまれないらしいが、importで呼び出しは可能らしい
+
+//ヘッダーとフッターに対するcss
+html{
+  font-size: 100%;
+  padding: 0;
+  margin:0;
+}
+.logo{
+  display: block;
+  float: left;
+}
+.header-notice{
+  background-color: $yel;
+  padding: 0;
+  margin: 0;
+  color: white;
+  .container{
+    padding: 0 .3rem;
+    margin: 0 auto;
+    span{
+      font-size: .8rem;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+header{
+  display: block;
+  height: 3.5rem;
+  z-index: 9;
+  border-top: solid 2px $yel;
+  padding: 0.3rem 0;
+  //border: 1px solid black;
+  .container{
+    padding: 0.5rem 0.4rem;
+  }
+  span{
+    line-height: 2.3rem;
+    display: inline-block;
+    float: left;
+    margin: 0 2rem;
+  }
+  .header-logo{
+    max-height: 2.5rem;
+    max-width: 33%;
+  }
+  .button-head{
+    line-height: 2.4rem;
+    font-size: 0.7rem;
+    float: right;
+    border-radius: 0.2rem;
+    padding: 0 1.3rem;
+    display: block;
+    color: $blk;
+    font-weight: 700;
+  }
+  .button-post{
+    background-color: $yel;
+    border-bottom:  $yel-dk 2px solid;
+  }
+  .button-login{
+    background-color: $red;
+    border-bottom:  $red-dk 2px solid;
+    color: white !important;
+    margin-right: .6rem;
+  }
+  .button-mypage-head{
+    line-height: 2.4rem;
+    float: right;
+    display: inline-block;
+    padding: 0 1rem;
+    img{
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 30rem;
+    }
+  }
+}
+
+footer{
+  clear: both;
+  height: 3.5rem;
+  z-index: 1;
+  border-top: solid 2px $gry;
+  padding: 3rem 0;
+  color: $blk;
+  font-size: 0.8rem;
+  position: relative;
+  display: block;
+  a{
+    color: $blk;
+  }
+  ul{
+    float: left;
+    border-left: 1px solid $gry;
+  }
+  li{
+    display: block;
+    float: left;
+    padding: 0 1rem;
+    border-right: 1px solid $gry;
+  }
+  p{
+    display: block;
+    clear: both;
+    margin-top: 3rem;
+  }
+  .footer-logo{
+    height: 1.5rem;
+    margin-right: 2rem;
+  }
+  .copyright{
+    display: block;
+    margin: 1rem 0;
+  }
+  .inner{
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.add-head{
+  color: white;
+  display: inherit;
+  padding: .5rem 0;
+  .inner{
+    display: block;
+    width: 100%;
+  }
+}
+.notice{
+  background-color: $org !important;
+}
+.alert{
+  background-color: $red !important;
+}
+.hide_notice{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 640px){
+  header{
+    height: 3rem;
+  }
+  .button-mypage-head{
+    margin-right: .4rem !important;
+    padding: 0 .5rem !important;
+    img{
+      height: 2.2rem !important;
+      width: 2.2rem !important;
+      border-radius: 4rem !important;
+    }
+  }
+  .box-img-user-head{
+    width: 2rem !important;
+    height: 2rem !important;
+    img{
+      width: 2rem !important;
+      height: 2rem !important;
+    }
+  }
+  .button-head{
+    line-height: 2rem !important;
+    font-size: .6rem !important;
+    padding: 0 .7rem !important;
+  }
+  footer{
+    text-align: center;
+    padding: 1rem 0;
+    img{
+      display: block;
+
+    }
+    .logo{
+      float: none;
+      margin: 0 auto;
+    }
+    ul{
+      margin: .5rem 0;
+      border: none;
+      padding: 0;
+      width: 100%;
+    }
+    li{
+      display: block !important;
+      width: 100% !important;
+      border: none;
+      margin: .5rem 0;
+      padding: 0;
+    }
+  }
+}

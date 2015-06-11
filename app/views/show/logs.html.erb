@@ -1,0 +1,143 @@
+<% set_meta_tags :title => @posts[:title]+"/"+@places[:name]+"の山行ログ", :description => @places[:name]+"への山行ログならMARKSで。"+" - "+@posts[:description].truncate(150, omission: '...') %>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3&appId=161993453995972";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!--ここからぱんくず-->
+<div class="bg-ash">
+  <div class="container">
+    <ul class="bread-crumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/top"><span itemprop="name">MARKS 山 TOP</span></a>
+          <meta itemprop="position" content="1">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @areas[:id] %>"><span itemprop="name"><%= @areas[:name] %></span></a>
+          <meta itemprop="position" content="2">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @areas[:id] %>/place/<%= @places[:id] %>"><span itemprop="name"><%= @places[:name] %></span></a>
+          <meta itemprop="position" content="3">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @areas[:id] %>/place/<%= @places[:id] %>/logs"><span itemprop="name">ログ一覧</span></a>
+          <meta itemprop="position" content="4">&gt;
+      </li>
+      <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href="/area/<%= @areas[:id] %>/place/<%= @places[:id] %>/logs/<%= @posts[:id] %>"><span itemprop="name"><%= @posts[:title] %></span></a>
+          <meta itemprop="position" content="5">
+      </li>
+    </ul>
+  </div>
+</div>
+<!--ぱんくずここまで-->
+<main>
+  <div class="container container-logs-detail">
+    <h1><%= @posts[:title] %></h1>
+    <span class="txt-subinfo-posts">
+      <span class="txt-mountain-logs"><%= @places[:name] %></span>
+       |
+      <%= @posts[:year] %>/<%= @posts[:month] %>/<%= @posts[:date] %>
+       |
+      <% if @posts[:nights] == "0" then %>
+      日帰り
+      <% else %>
+      <%= @posts[:nights] %>泊
+      <% end %>
+    </span>
+    <p><img class="img-posts-detail" src="/uploads/post/img1/<%= @posts[:id] %>/<%= @posts[:img1] %>"></p>
+
+    <% @rs = @posts[:ratesatisfy] %>
+      <div class="rating-logs">
+        <p class="rate-p"><span class="rate">オススメ度</span></p>
+        <span class="star">
+          <% if @rs == "1.0" or @rs == "1.5"  then  %>
+          ★☆☆☆☆
+          <% elsif @rs == "2.0" or @rs == "2.5"  %>
+          ★★☆☆☆
+          <% elsif @rs == "3.0" or @rs == "3.5"  %>
+          ★★★☆☆
+          <% elsif @rs == "4.0" or @rs == "4.5"  %>
+          ★★★★☆
+          <% else %>
+          ★★★★★
+          <% end %>
+        <%= @posts[:ratesatisfy] %>
+        </span>
+      </div>
+    <% @rd = @posts[:ratedanger] %>
+      <div class="rating-logs">
+        <p class="rate-p"><span class="rate">難易度</span></p>
+        <span class="star">
+          <% if @rd == "1.0" or @rd == "1.5"  then  %>
+          ★☆☆☆☆
+          <% elsif @rd == "2.0" or @rd == "2.5"  %>
+          ★★☆☆☆
+          <% elsif @rd == "3.0" or @rd == "3.5"  %>
+          ★★★☆☆
+          <% elsif @rd == "4.0" or @rd == "4.5"  %>
+          ★★★★☆
+          <% else %>
+          ★★★★★
+          <% end %>
+        <%= @posts[:ratedanger] %>
+        </span>
+        <span class="txt-for-logs">
+          <% if @rd == "1.0" or @rd == "1.5"  then  %>
+          山が初めての人
+          <% elsif @rd == "2.0" or @rd == "2.5"  %>
+          初級者向け
+          <% elsif @rd == "3.0" or @rd == "3.5"  %>
+          中級者向け
+          <% elsif @rd == "4.0" or @rd == "4.5"  %>
+          中~上級者向け
+          <% else %>
+          最上級者向け
+        <% end %>
+        </span>
+      </div>
+    <p><%= simple_format(@posts[:description]) %></p>
+    <span class="txt-subinfo-posts">
+      <%= @posts[:year] %>/<%= @posts[:month] %>/<%= @posts[:date] %>
+       |
+      <% if @posts[:nights] == "0" then %>
+      日帰り
+      <% else %>
+      <%= @posts[:nights] %>泊
+      <% end %>
+    </span>
+    <div class="outer-share">
+      <div class="fb-like" data-href="http://mrks.me/area/<%= @areas[:id] %>/place/<%= @places[:id] %>/logs/<%= @posts[:id] %>" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>
+    <div class="box-user-logs">
+    <div class="inner">
+      <h2>投稿者</h2>
+      <% if @users[:img] != nil then %>
+        <img src="/uploads/user/img/<%= @users[:id] %>/<%= @users[:img] %>">
+      <% else %>
+        <img src="<%= asset_path "icon-user-noimg-bw.png" %>">
+      <% end %>
+      <span class="box-span"><%= @users[:nickname] %></span>
+      <span class="box-span under"><%= @users[:introduction] %></span>
+      <div class="outer"><span class="summit"><%= @cnt_summit %>座の山 に登頂しているハイカーです。</span></div>
+    </div>
+    </div>
+  </div>
+</main>
+<section class="sec-logs-place">
+  <div class="container container-logs-detail">
+    <h2>登った山</h2>
+    <a href="/area/<%= @areas[:id] %>/place/<%= @places[:id] %>">
+      <h3><%= @places[:name] %></h3>
+    </a>
+    <span>(<%= number_with_delimiter(@places[:altitude]) %>m)</span>
+    <p><%= @places[:description].truncate(50, omission: '...') %>
+    <a href="/area/<%= @areas[:id] %>/place/<%= @places[:id] %>" class="link-moreplace-log">くわしく見る ></a></p>
+  </div>
+</section>
